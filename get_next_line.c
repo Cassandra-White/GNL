@@ -74,7 +74,7 @@ int		get_next_line(int fd, char **line)
 	{
 		buff[bytes] = '\0';
 		if (!save[fd])
-			save[fd] = ft_malloc_it(1);
+			save[fd] = ft_malloc(1);
 		temp = ft_strjoin(save[fd], buff);
 		free(save[fd]);
 		save[fd] = temp;

@@ -1,22 +1,22 @@
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-char	*ft_malloc_it(size_t size)
+char	*ft_malloc(size_t size)
 {
-	char	*str;
+	char	*s;
 	size_t	i;
 
 	i = 0;
-	if (!(str = malloc(sizeof(size + 1))))
+	if (!(s = malloc(sizeof(size + 1))))
 		return (NULL);
 	while (i < size)
-		str[i++] = 0;
-	str[i] = '\0';
-	return (str);
+		s[i++] = 0;
+	s[i] = '\0';
+	return (s);
 }
 
 char		*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
+	char	*string;
 	size_t	size;
 	int		i;
 
@@ -24,69 +24,69 @@ char		*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	size = ft_strlen(s1) + ft_strlen(s2);
-	if (!(str = (char *)malloc((size + 1) * sizeof(char))))
+	if (!(string = (char *)malloc((size + 1) * sizeof(char))))
 		return (NULL);
 	while (*s1)
-		str[i++] = *(s1++);
+		string[i++] = *(s1++);
 	while (*s2)
-		str[i++] = *(s2++);
-	str[i] = '\0';
-	return (str);
+		string[i++] = *(s2++);
+	string[i] = '\0';
+	return (string);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char		*ft_substr(char const *s, unsigned int str, size_t len)
 {
 	size_t		i;
-	char		*cpy;
+	char		*copy;
 
 	i = 0;
-	if (!s || !(cpy = malloc(((len + 1) * sizeof(char)))))
+	if (!s || !(copy = malloc(((len + 1) * sizeof(char)))))
 		return (0);
-	if (start > ft_strlen(s))
+	if (str > ft_strlen(s))
 	{
-		cpy[0] = '\0';
-		return (cpy);
+		copy[0] = '\0';
+		return (copy);
 	}
-	while (i < len && s[start])
+	while (i < len && s[str])
 	{
-		cpy[i] = s[start];
+		copy[i] = s[str];
 		i++;
-		start++;
+		str++;
 	}
-	cpy[i] = '\0';
-	return (cpy);
+	copy[i] = '\0';
+	return (copy);
 }
 
 char		*ft_strdup(const char *s1)
 {
-	char	*cpy;
+	char	*copy;
 	int		i;
 
 	i = 0;
 	while (s1[i])
 		i++;
-	if (!(cpy = (char *)malloc((i * sizeof(char)) + 1)))
+	if (!(copy = (char *)malloc((i * sizeof(char)) + 1)))
 		return (0);
 	i = -1;
 	while (s1[++i])
-		cpy[i] = s1[i];
-	cpy[i] = '\0';
-	return (cpy);
+		copy[i] = s1[i];
+	copy[i] = '\0';
+	return (copy);
 }
 
-char		*ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *str, int c)
 {
 	if (c == 0)
 	{
-		while (*s)
-			s++;
-		return ((char*)s);
+		while (*str)
+			str++;
+		return ((char*)str);
 	}
-	while (*s)
+	while (*str)
 	{
-		if (*s == (unsigned char)c)
-			return ((char*)s);
-		s++;
+		if (*str == (unsigned char)c)
+			return ((char*)str);
+		str++;
 	}
 	return (0);
 }
