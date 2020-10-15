@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akrissan <akrissan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/15 23:35:13 by akrissan          #+#    #+#             */
+/*   Updated: 2020/10/15 23:35:55 by akrissan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 char	*ft_malloc(size_t size)
@@ -14,7 +26,7 @@ char	*ft_malloc(size_t size)
 	return (s);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*string;
 	size_t	size;
@@ -34,7 +46,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (string);
 }
 
-char		*ft_substr(char const *s, unsigned int str, size_t len)
+char	*ft_substr(char const *s, unsigned int str, size_t len)
 {
 	size_t		i;
 	char		*copy;
@@ -57,7 +69,7 @@ char		*ft_substr(char const *s, unsigned int str, size_t len)
 	return (copy);
 }
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*copy;
 	int		i;
@@ -74,7 +86,7 @@ char		*ft_strdup(const char *s1)
 	return (copy);
 }
 
-char		*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	if (c == 0)
 	{
@@ -90,4 +102,3 @@ char		*ft_strchr(const char *str, int c)
 	}
 	return (0);
 }
-
