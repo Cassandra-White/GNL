@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akrissan <akrissan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/15 23:20:35 by akrissan          #+#    #+#             */
+/*   Updated: 2020/10/15 23:22:14 by akrissan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -12,7 +22,6 @@ size_t	ft_strlen(const char *s1)
 	return (i);
 }
 
-
 int		ft_end(char **line, char **save, int fd, int bytes)
 {
 	if (bytes == BUFFER_SIZE)
@@ -25,7 +34,7 @@ int		ft_end(char **line, char **save, int fd, int bytes)
 
 int		ft_line(char **line, char **save, int fd, int i)
 {
-	char 	*temp;
+	char	*temp;
 
 	*line = ft_substr(save[fd], 0, i);
 	temp = ft_strdup(save[fd] + i + 1);
@@ -39,8 +48,7 @@ int		ft_line(char **line, char **save, int fd, int i)
 	return (1);
 }
 
-
-int	ft_next_step(char **line, char **save, int fd, int bytes)
+int		ft_next_step(char **line, char **save, int fd, int bytes)
 {
 	int		i;
 
@@ -51,13 +59,10 @@ int	ft_next_step(char **line, char **save, int fd, int bytes)
 		**line = '\0';
 		return (0);
 	}
-	
 	while (save[fd][i] != '\0' && save[fd][i] != '\n')
 		i++;
-	return (save[fd][i] == '\0') ?
-		(ft_end(line, save, fd, bytes))
-		: (ft_line(line, save, fd, i));
-
+	return ((save[fd][i] == '\0') ? (ft_end(line, save, fd, bytes))
+			: (ft_line(line, save, fd, i)));
 	return (1);
 }
 
@@ -66,11 +71,11 @@ int		get_next_line(int fd, char **line)
 	static char	*save[255];
 	char		buff[BUFFER_SIZE + 1];
 	char		*temp;
-	int		bytes;
-	
+	int			bytes;
+
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
-	while ((bytes = read(fd, buff, BUFFER_SIZE)) >0)
+	while ((bytes = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[bytes] = '\0';
 		if (!save[fd])
@@ -79,7 +84,7 @@ int		get_next_line(int fd, char **line)
 		free(save[fd]);
 		save[fd] = temp;
 		if (ft_strchr(buff, '\n'))
-			break;
+			break ;
 	}
 	if (bytes < 0)
 		return (-1);
